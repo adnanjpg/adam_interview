@@ -9,6 +9,9 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   flutter_riverpod: ^1.0.4
+  freezed: ^2.0.3+1
+  build_runner: ^2.1.11
+  freezed_annotation: ^2.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
