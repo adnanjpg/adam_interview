@@ -1,4 +1,4 @@
-import 'package:adam_interview/prov/bottom_bar_prov.dart';
+import '../prov/bottom_bar_prov.dart';
 
 import '../utils/enums/bottom_bar_index.dart';
 import 'package:flutter/material.dart';

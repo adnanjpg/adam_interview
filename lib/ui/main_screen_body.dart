@@ -1,15 +1,14 @@
+import '../prov/bottom_bar_prov.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MainScreenBody extends StatefulWidget {
+class MainScreenBody extends ConsumerWidget {
   const MainScreenBody({Key? key}) : super(key: key);
 
   @override
-  State<MainScreenBody> createState() => _MainScreenBodyState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedIndex = ref.watch(bottomBarProv);
 
-class _MainScreenBodyState extends State<MainScreenBody> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
+    return selectedIndex.body;
   }
 }
