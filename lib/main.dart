@@ -1,3 +1,4 @@
+import 'package:adam_interview/ui/main_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
           onPrimary: Colors.black,
         ),
       ),
+      home: const MainScreen(),
     );
   }
 }
