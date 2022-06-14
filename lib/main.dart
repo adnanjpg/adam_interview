@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'ui/main_screen.dart';
+import 'utils/hive_initer.dart';
 
-void main() {
+void main() async {
+  await HiveIniter.init();
+
   runApp(
     const ProviderScope(
       child: MyApp(),

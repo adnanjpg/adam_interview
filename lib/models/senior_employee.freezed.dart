@@ -16,9 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SeniorEmployee {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
+  @HiveField(2)
   List<int> get juniorIds => throw _privateConstructorUsedError;
+  @HiveField(3)
   int? get taskId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +35,11 @@ abstract class $SeniorEmployeeCopyWith<$Res> {
   factory $SeniorEmployeeCopyWith(
           SeniorEmployee value, $Res Function(SeniorEmployee) then) =
       _$SeniorEmployeeCopyWithImpl<$Res>;
-  $Res call({int id, String name, List<int> juniorIds, int? taskId});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) String name,
+      @HiveField(2) List<int> juniorIds,
+      @HiveField(3) int? taskId});
 }
 
 /// @nodoc
@@ -78,7 +86,11 @@ abstract class _$$_SeniorEmployeeCopyWith<$Res>
           _$_SeniorEmployee value, $Res Function(_$_SeniorEmployee) then) =
       __$$_SeniorEmployeeCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String name, List<int> juniorIds, int? taskId});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) String name,
+      @HiveField(2) List<int> juniorIds,
+      @HiveField(3) int? taskId});
 }
 
 /// @nodoc
@@ -124,26 +136,30 @@ class __$$_SeniorEmployeeCopyWithImpl<$Res>
 
 class _$_SeniorEmployee extends _SeniorEmployee {
   const _$_SeniorEmployee(
-      {required this.id,
-      required this.name,
-      final List<int> juniorIds = const [],
-      this.taskId})
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.name,
+      @HiveField(2) final List<int> juniorIds = const [],
+      @HiveField(3) this.taskId})
       : _juniorIds = juniorIds,
         super._();
 
   @override
+  @HiveField(0)
   final int id;
   @override
+  @HiveField(1)
   final String name;
   final List<int> _juniorIds;
   @override
   @JsonKey()
+  @HiveField(2)
   List<int> get juniorIds {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_juniorIds);
   }
 
   @override
+  @HiveField(3)
   final int? taskId;
 
   @override
@@ -179,19 +195,23 @@ class _$_SeniorEmployee extends _SeniorEmployee {
 
 abstract class _SeniorEmployee extends SeniorEmployee {
   const factory _SeniorEmployee(
-      {required final int id,
-      required final String name,
-      final List<int> juniorIds,
-      final int? taskId}) = _$_SeniorEmployee;
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final String name,
+      @HiveField(2) final List<int> juniorIds,
+      @HiveField(3) final int? taskId}) = _$_SeniorEmployee;
   const _SeniorEmployee._() : super._();
 
   @override
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @override
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
   @override
+  @HiveField(2)
   List<int> get juniorIds => throw _privateConstructorUsedError;
   @override
+  @HiveField(3)
   int? get taskId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
