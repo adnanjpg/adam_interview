@@ -1,3 +1,4 @@
+import 'package:adam_interview/ui/employees/junior_employee_li.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,8 +18,8 @@ class EmployeeList extends ConsumerWidget {
             itemCount: employees.length,
             itemBuilder: (context, indx) {
               final emp = employees[indx];
-              // TODO: have an add a junior button
-              return Text(emp.name);
+
+              return JuniorEmployeeLI(employee: emp);
             },
           );
         },
