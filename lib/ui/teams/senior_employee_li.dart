@@ -1,9 +1,9 @@
-import '../../models/junior_employee.dart';
-import '../employees/junior_employee_li.dart';
+import 'package:flutter/material.dart';
 
 import '../../data/employees_data.dart';
+import '../../models/junior_employee.dart';
 import '../../models/senior_employee.dart';
-import 'package:flutter/material.dart';
+import '../employees/junior_employee_li.dart';
 
 class SeniorEmployeeLI extends StatefulWidget {
   final SeniorEmployee employee;

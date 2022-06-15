@@ -1,5 +1,5 @@
-import 'package:adam_interview/data/tasks_data.dart';
-import 'package:adam_interview/models/senior_employee.dart';
+import '../../data/tasks_data.dart';
+import '../../models/senior_employee.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/employees_data.dart';

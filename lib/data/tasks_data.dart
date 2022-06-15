@@ -1,10 +1,10 @@
-import 'employees_data.dart';
-import '../models/senior_employee.dart';
-import '../models/task.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../models/senior_employee.dart';
+import '../models/task.dart';
 import '../utils/consts.dart';
 import 'data_manager.dart';
+import 'employees_data.dart';
 
 abstract class TasksData {
   static Future<List<Task>> readTasks() {
