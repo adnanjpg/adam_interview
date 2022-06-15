@@ -1,5 +1,6 @@
-import '../../models/junior_employee.dart';
 import 'package:flutter/material.dart';
+
+import '../../models/junior_employee.dart';
 
 class JuniorEmployeeLI extends StatelessWidget {
   final JuniorEmployee employee;

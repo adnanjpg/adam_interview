@@ -100,38 +100,42 @@ abstract class EmployeesData {
     return;
   }
 
-  static Future<void> updateValueWhere<T>({
-    required String boxName,
-    required bool Function(T) predicate,
-    required T newValue,
-  }) async {
-    final initVals = await DataManager.readListData(boxName);
-
-    final newVals = <T>[];
-
-    for (final val in initVals) {
-      if (predicate(val as T)) {
-        newVals.add(newValue);
-      } else {
-        newVals.add(val);
-      }
-    }
-
-    final box = await Hive.openBox(boxName);
-    await box.clear();
-    await box.addAll(newVals);
-  }
-
   static Future<void> updateJuniorEmployee(JuniorEmployee employee) async {
-    await updateValueWhere<JuniorEmployee>(
+    await DataManager.updateValueWhere<JuniorEmployee>(
       boxName: juniorEmployeesBoxName,
       newValue: employee,
       predicate: (element) => element.id == employee.id,
     );
   }
 
+  static Future<void> assignTaskToSenior({
+    required SeniorEmployee employee,
+    required int taskId,
+  }) async {
+    final juniors = await getSeniorsEmployees(employee);
+
+    employee = employee.copyWith(
+      taskIds: [
+        ...employee.taskIds,
+        taskId,
+      ],
+    );
+
+    await updateSeniorEmployee(employee);
+
+    // now, we wanna assign to the first available junior
+
+    for (var junior in juniors) {
+      if (junior.taskId == null) {
+        junior = junior.copyWith(taskId: taskId);
+        await updateJuniorEmployee(junior);
+        break;
+      }
+    }
+  }
+
   static Future<void> updateSeniorEmployee(SeniorEmployee employee) async {
-    await updateValueWhere<SeniorEmployee>(
+    await DataManager.updateValueWhere<SeniorEmployee>(
       boxName: seniorEmployeesBoxName,
       newValue: employee,
       predicate: (element) => element.id == employee.id,

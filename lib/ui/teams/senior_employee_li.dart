@@ -1,5 +1,5 @@
-import 'package:adam_interview/models/junior_employee.dart';
-import 'package:adam_interview/ui/employees/junior_employee_li.dart';
+import '../../models/junior_employee.dart';
+import '../employees/junior_employee_li.dart';
 
 import '../../data/employees_data.dart';
 import '../../models/senior_employee.dart';

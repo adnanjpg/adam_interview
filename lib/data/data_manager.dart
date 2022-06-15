@@ -32,4 +32,26 @@ abstract class DataManager {
       yield data;
     }
   }
+
+  static Future<void> updateValueWhere<T>({
+    required String boxName,
+    required bool Function(T) predicate,
+    required T newValue,
+  }) async {
+    final initVals = await DataManager.readListData(boxName);
+
+    final newVals = <T>[];
+
+    for (final val in initVals) {
+      if (predicate(val as T)) {
+        newVals.add(newValue);
+      } else {
+        newVals.add(val);
+      }
+    }
+
+    final box = await Hive.openBox(boxName);
+    await box.clear();
+    await box.addAll(newVals);
+  }
 }
