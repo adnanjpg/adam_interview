@@ -1,31 +1,31 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'senior_employee.dart';
+part of 'junior_employee.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class SeniorEmployeeAdapter extends TypeAdapter<SeniorEmployee> {
+class JuniorEmployeeAdapter extends TypeAdapter<JuniorEmployee> {
   @override
   final int typeId = 1;
 
   @override
-  SeniorEmployee read(BinaryReader reader) {
+  JuniorEmployee read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return SeniorEmployee(
-      id: fields[0] as int,
+    return JuniorEmployee(
+      id: fields[0] as int?,
       name: fields[1] as String,
-      juniorIds: (fields[2] as List).cast<int>(),
-      taskIds: (fields[3] as List).cast<int>(),
+      relatedTo: fields[2] as int?,
+      taskId: fields[3] as int?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, SeniorEmployee obj) {
+  void write(BinaryWriter writer, JuniorEmployee obj) {
     writer
       ..writeByte(4)
       ..writeByte(0)
@@ -33,9 +33,9 @@ class SeniorEmployeeAdapter extends TypeAdapter<SeniorEmployee> {
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.juniorIds)
+      ..write(obj.relatedTo)
       ..writeByte(3)
-      ..write(obj.taskIds);
+      ..write(obj.taskId);
   }
 
   @override
@@ -44,7 +44,7 @@ class SeniorEmployeeAdapter extends TypeAdapter<SeniorEmployee> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SeniorEmployeeAdapter &&
+      other is JuniorEmployeeAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

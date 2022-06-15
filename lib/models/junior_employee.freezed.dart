@@ -16,9 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$JuniorEmployee {
+  @HiveField(0)
   int? get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
-  int get relatedTo => throw _privateConstructorUsedError;
+  @HiveField(2)
+  int? get relatedTo => throw _privateConstructorUsedError;
+  @HiveField(3)
   int? get taskId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +35,11 @@ abstract class $JuniorEmployeeCopyWith<$Res> {
   factory $JuniorEmployeeCopyWith(
           JuniorEmployee value, $Res Function(JuniorEmployee) then) =
       _$JuniorEmployeeCopyWithImpl<$Res>;
-  $Res call({int? id, String name, int relatedTo, int? taskId});
+  $Res call(
+      {@HiveField(0) int? id,
+      @HiveField(1) String name,
+      @HiveField(2) int? relatedTo,
+      @HiveField(3) int? taskId});
 }
 
 /// @nodoc
@@ -62,7 +70,7 @@ class _$JuniorEmployeeCopyWithImpl<$Res>
       relatedTo: relatedTo == freezed
           ? _value.relatedTo
           : relatedTo // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       taskId: taskId == freezed
           ? _value.taskId
           : taskId // ignore: cast_nullable_to_non_nullable
@@ -78,7 +86,11 @@ abstract class _$$_JuniorEmployeeCopyWith<$Res>
           _$_JuniorEmployee value, $Res Function(_$_JuniorEmployee) then) =
       __$$_JuniorEmployeeCopyWithImpl<$Res>;
   @override
-  $Res call({int? id, String name, int relatedTo, int? taskId});
+  $Res call(
+      {@HiveField(0) int? id,
+      @HiveField(1) String name,
+      @HiveField(2) int? relatedTo,
+      @HiveField(3) int? taskId});
 }
 
 /// @nodoc
@@ -111,7 +123,7 @@ class __$$_JuniorEmployeeCopyWithImpl<$Res>
       relatedTo: relatedTo == freezed
           ? _value.relatedTo
           : relatedTo // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       taskId: taskId == freezed
           ? _value.taskId
           : taskId // ignore: cast_nullable_to_non_nullable
@@ -124,19 +136,23 @@ class __$$_JuniorEmployeeCopyWithImpl<$Res>
 
 class _$_JuniorEmployee extends _JuniorEmployee {
   const _$_JuniorEmployee(
-      {required this.id,
-      required this.name,
-      required this.relatedTo,
-      this.taskId})
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.name,
+      @HiveField(2) this.relatedTo,
+      @HiveField(3) this.taskId})
       : super._();
 
   @override
+  @HiveField(0)
   final int? id;
   @override
+  @HiveField(1)
   final String name;
   @override
-  final int relatedTo;
+  @HiveField(2)
+  final int? relatedTo;
   @override
+  @HiveField(3)
   final int? taskId;
 
   @override
@@ -171,19 +187,23 @@ class _$_JuniorEmployee extends _JuniorEmployee {
 
 abstract class _JuniorEmployee extends JuniorEmployee {
   const factory _JuniorEmployee(
-      {required final int? id,
-      required final String name,
-      required final int relatedTo,
-      final int? taskId}) = _$_JuniorEmployee;
+      {@HiveField(0) required final int? id,
+      @HiveField(1) required final String name,
+      @HiveField(2) final int? relatedTo,
+      @HiveField(3) final int? taskId}) = _$_JuniorEmployee;
   const _JuniorEmployee._() : super._();
 
   @override
+  @HiveField(0)
   int? get id => throw _privateConstructorUsedError;
   @override
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
   @override
-  int get relatedTo => throw _privateConstructorUsedError;
+  @HiveField(2)
+  int? get relatedTo => throw _privateConstructorUsedError;
   @override
+  @HiveField(3)
   int? get taskId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

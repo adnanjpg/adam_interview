@@ -23,7 +23,7 @@ mixin _$SeniorEmployee {
   @HiveField(2)
   List<int> get juniorIds => throw _privateConstructorUsedError;
   @HiveField(3)
-  int? get taskId => throw _privateConstructorUsedError;
+  List<int> get taskIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SeniorEmployeeCopyWith<SeniorEmployee> get copyWith =>
@@ -39,7 +39,7 @@ abstract class $SeniorEmployeeCopyWith<$Res> {
       {@HiveField(0) int id,
       @HiveField(1) String name,
       @HiveField(2) List<int> juniorIds,
-      @HiveField(3) int? taskId});
+      @HiveField(3) List<int> taskIds});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$SeniorEmployeeCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? juniorIds = freezed,
-    Object? taskId = freezed,
+    Object? taskIds = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -71,10 +71,10 @@ class _$SeniorEmployeeCopyWithImpl<$Res>
           ? _value.juniorIds
           : juniorIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      taskId: taskId == freezed
-          ? _value.taskId
-          : taskId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      taskIds: taskIds == freezed
+          ? _value.taskIds
+          : taskIds // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 }
@@ -90,7 +90,7 @@ abstract class _$$_SeniorEmployeeCopyWith<$Res>
       {@HiveField(0) int id,
       @HiveField(1) String name,
       @HiveField(2) List<int> juniorIds,
-      @HiveField(3) int? taskId});
+      @HiveField(3) List<int> taskIds});
 }
 
 /// @nodoc
@@ -109,7 +109,7 @@ class __$$_SeniorEmployeeCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? juniorIds = freezed,
-    Object? taskId = freezed,
+    Object? taskIds = freezed,
   }) {
     return _then(_$_SeniorEmployee(
       id: id == freezed
@@ -124,10 +124,10 @@ class __$$_SeniorEmployeeCopyWithImpl<$Res>
           ? _value._juniorIds
           : juniorIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      taskId: taskId == freezed
-          ? _value.taskId
-          : taskId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      taskIds: taskIds == freezed
+          ? _value._taskIds
+          : taskIds // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 }
@@ -139,8 +139,9 @@ class _$_SeniorEmployee extends _SeniorEmployee {
       {@HiveField(0) required this.id,
       @HiveField(1) required this.name,
       @HiveField(2) final List<int> juniorIds = const [],
-      @HiveField(3) this.taskId})
+      @HiveField(3) final List<int> taskIds = const []})
       : _juniorIds = juniorIds,
+        _taskIds = taskIds,
         super._();
 
   @override
@@ -158,13 +159,18 @@ class _$_SeniorEmployee extends _SeniorEmployee {
     return EqualUnmodifiableListView(_juniorIds);
   }
 
+  final List<int> _taskIds;
   @override
+  @JsonKey()
   @HiveField(3)
-  final int? taskId;
+  List<int> get taskIds {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_taskIds);
+  }
 
   @override
   String toString() {
-    return 'SeniorEmployee(id: $id, name: $name, juniorIds: $juniorIds, taskId: $taskId)';
+    return 'SeniorEmployee(id: $id, name: $name, juniorIds: $juniorIds, taskIds: $taskIds)';
   }
 
   @override
@@ -176,7 +182,7 @@ class _$_SeniorEmployee extends _SeniorEmployee {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other._juniorIds, _juniorIds) &&
-            const DeepCollectionEquality().equals(other.taskId, taskId));
+            const DeepCollectionEquality().equals(other._taskIds, _taskIds));
   }
 
   @override
@@ -185,7 +191,7 @@ class _$_SeniorEmployee extends _SeniorEmployee {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(_juniorIds),
-      const DeepCollectionEquality().hash(taskId));
+      const DeepCollectionEquality().hash(_taskIds));
 
   @JsonKey(ignore: true)
   @override
@@ -198,7 +204,7 @@ abstract class _SeniorEmployee extends SeniorEmployee {
       {@HiveField(0) required final int id,
       @HiveField(1) required final String name,
       @HiveField(2) final List<int> juniorIds,
-      @HiveField(3) final int? taskId}) = _$_SeniorEmployee;
+      @HiveField(3) final List<int> taskIds}) = _$_SeniorEmployee;
   const _SeniorEmployee._() : super._();
 
   @override
@@ -212,7 +218,7 @@ abstract class _SeniorEmployee extends SeniorEmployee {
   List<int> get juniorIds => throw _privateConstructorUsedError;
   @override
   @HiveField(3)
-  int? get taskId => throw _privateConstructorUsedError;
+  List<int> get taskIds => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_SeniorEmployeeCopyWith<_$_SeniorEmployee> get copyWith =>

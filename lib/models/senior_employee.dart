@@ -13,6 +13,6 @@ class SeniorEmployee with _$SeniorEmployee {
     @HiveField(0) required int id,
     @HiveField(1) required String name,
     @HiveField(2) @Default([]) List<int> juniorIds,
-    @HiveField(3) int? taskId,
+    @HiveField(3) @Default([]) List<int> taskIds,
   }) = _SeniorEmployee;
 }
