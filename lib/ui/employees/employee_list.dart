@@ -1,8 +1,8 @@
-import 'junior_employee_li.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../prov/employees_prov.dart';
+import 'junior_employee_li.dart';
 
 class EmployeeList extends ConsumerWidget {
   const EmployeeList({Key? key}) : super(key: key);

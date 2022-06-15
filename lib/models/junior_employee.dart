@@ -1,6 +1,7 @@
-import 'senior_employee.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import 'senior_employee.dart';
 
 part 'junior_employee.freezed.dart';
 part 'junior_employee.g.dart';

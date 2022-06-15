@@ -1,8 +1,8 @@
-import '../../data/tasks_data.dart';
-import '../../models/senior_employee.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/employees_data.dart';
+import '../../data/tasks_data.dart';
+import '../../models/senior_employee.dart';
 import '../../models/task.dart';
 
 class CreateTaskForm extends StatefulWidget {
@@ -24,67 +24,79 @@ class _CreateTaskFormState extends State<CreateTaskForm> {
   final formKey = GlobalKey<FormState>();
 
   bool verifyForm() {
-    return formKey.currentState?.validate() == true && selectedSenior != null;
+    final seniorIsNull = selectedSenior == null;
+
+    if (seniorIsNull) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Senior is required'),
+        ),
+      );
+      return false;
+    }
+    return formKey.currentState?.validate() == true;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: ListView(
-        children: [
-          TextFormField(
-            initialValue: task.name,
-            decoration: const InputDecoration(
-              labelText: 'Name',
+    return Scaffold(
+      body: Form(
+        key: formKey,
+        child: ListView(
+          children: [
+            TextFormField(
+              initialValue: task.name,
+              decoration: const InputDecoration(
+                labelText: 'Name',
+              ),
+              onChanged: (value) {
+                task = task.copyWith(name: value);
+                setState(() {});
+              },
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'Name is required';
+                }
+                return null;
+              },
             ),
-            onChanged: (value) {
-              task = task.copyWith(name: value);
-              setState(() {});
-            },
-            validator: (val) {
-              if (val == null || val.isEmpty) {
-                return 'Name is required';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            initialValue: task.description,
-            decoration: const InputDecoration(
-              labelText: 'Description',
+            TextFormField(
+              initialValue: task.description,
+              decoration: const InputDecoration(
+                labelText: 'Description',
+              ),
+              maxLines: 4,
+              onChanged: (value) {
+                task = task.copyWith(description: value);
+                setState(() {});
+              },
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'Description is required';
+                }
+                return null;
+              },
             ),
-            maxLines: 4,
-            onChanged: (value) {
-              task = task.copyWith(description: value);
-              setState(() {});
-            },
-            validator: (val) {
-              if (val == null || val.isEmpty) {
-                return 'Description is required';
-              }
-              return null;
-            },
-          ),
-          _SeniorSelector(
-            onSelected: (senior) {
-              selectedSenior = senior;
-              setState(() {});
-            },
-          ),
-          ElevatedButton(
-            child: const Text('Create'),
-            onPressed: () {
-              if (verifyForm()) {
-                TasksData.createTask(
-                  task: task,
-                  senior: selectedSenior!,
-                );
-                Navigator.of(context).pop();
-              }
-            },
-          ),
-        ],
+            _SeniorSelector(
+              onSelected: (senior) {
+                selectedSenior = senior;
+                setState(() {});
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Create'),
+              onPressed: () {
+                if (verifyForm()) {
+                  TasksData.createTask(
+                    task: task,
+                    senior: selectedSenior!,
+                  );
+                  Navigator.of(context).pop();
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
