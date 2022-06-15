@@ -1,4 +1,4 @@
-import 'package:adam_interview/ui/employees/junior_employee_li.dart';
+import 'junior_employee_li.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

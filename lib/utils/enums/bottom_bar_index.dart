@@ -1,8 +1,8 @@
-import 'package:adam_interview/ui/teams/teams_list.dart';
+import 'package:flutter/material.dart';
 
 import '../../ui/employees/employee_list.dart';
 import '../../ui/tasks/task_list.dart';
-import 'package:flutter/material.dart';
+import '../../ui/teams/teams_list.dart';
 
 enum BottomBarIndex {
   tasks,

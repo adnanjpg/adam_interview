@@ -1,4 +1,4 @@
-import 'package:adam_interview/models/senior_employee.dart';
+import '../../models/senior_employee.dart';
 import 'package:flutter/material.dart';
 
 class SeniorEmployeeLI extends StatelessWidget {

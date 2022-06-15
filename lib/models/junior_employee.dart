@@ -1,3 +1,4 @@
+import 'senior_employee.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -15,4 +16,12 @@ class JuniorEmployee with _$JuniorEmployee {
     @HiveField(2) int? relatedTo,
     @HiveField(3) int? taskId,
   }) = _JuniorEmployee;
+
+  SeniorEmployee toSenior({required List<int> juniorIds}) {
+    return SeniorEmployee(
+      id: id!,
+      name: name,
+      juniorIds: juniorIds,
+    );
+  }
 }

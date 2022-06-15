@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import '../../data/employees_data.dart';
 import '../../models/junior_employee.dart';
-import 'package:flutter/material.dart';
 
 class CreateJuniorEmployeeForm extends StatefulWidget {
   const CreateJuniorEmployeeForm({Key? key}) : super(key: key);

@@ -1,4 +1,4 @@
-import 'package:adam_interview/models/junior_employee.dart';
+import '../models/junior_employee.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../models/senior_employee.dart';
