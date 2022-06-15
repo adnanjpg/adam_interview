@@ -10,6 +10,13 @@ abstract class EmployeesData {
     return DataManager.readListData<SeniorEmployee>(seniorEmployeesBoxName);
   }
 
+  static Future<List<SeniorEmployee>> readAvailableSeniorEmployees() async {
+    final employees =
+        await DataManager.readListData<SeniorEmployee>(seniorEmployeesBoxName);
+
+    return employees.where((element) => element.taskIds.length < 3).toList();
+  }
+
   static Stream<List<SeniorEmployee>> listenToSeniorEmployees() {
     return DataManager.listenToListData<SeniorEmployee>(seniorEmployeesBoxName);
   }

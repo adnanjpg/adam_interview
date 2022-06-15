@@ -4,6 +4,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../../prov/bottom_bar_prov.dart';
 import '../employees/create_junior_employee_form.dart';
+import '../tasks/create_task_form.dart';
 
 class MainScreenAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const MainScreenAppBar({Key? key}) : super(key: key);
@@ -22,6 +23,18 @@ class MainScreenAppBar extends ConsumerWidget implements PreferredSizeWidget {
                 context: context,
                 builder: (context) {
                   return const CreateJuniorEmployeeForm();
+                },
+              );
+            },
+          ),
+        if (bottomIndex == BottomBarIndex.tasks)
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              showMaterialModalBottomSheet(
+                context: context,
+                builder: (context) {
+                  return const CreateTaskForm();
                 },
               );
             },

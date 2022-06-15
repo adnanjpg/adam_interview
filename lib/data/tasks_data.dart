@@ -31,6 +31,22 @@ abstract class TasksData {
   }) async {
     final box = await Hive.openBox(tasksBoxName);
 
+    final boxVals = box.values;
+    Task? lastTask;
+    if (boxVals.isNotEmpty) {
+      lastTask = boxVals.last as Task?;
+    }
+
+    int id;
+
+    if (lastTask == null) {
+      id = 0;
+    } else {
+      id = lastTask.id! + 1;
+    }
+
+    task = task.copyWith(id: id);
+
     await box.add(task);
 
     await EmployeesData.assignTaskToSenior(
