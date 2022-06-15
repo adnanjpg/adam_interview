@@ -98,7 +98,7 @@ abstract class EmployeesData {
     if (unteamedCount >= 4) {
       // now, we may have a lot of juniors piled up in some cases,
       // so we wanna loop and convert each 4 to a team
-      for (int i = 0; i + 4 < unteamedCount; i += 4) {
+      for (int i = 0; i + 4 <= unteamedCount; i += 4) {
         final team = unteamed.sublist(i, i + 4);
         await convertToTeam(team);
       }
