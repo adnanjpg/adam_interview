@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$JuniorEmployee {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get relatedTo => throw _privateConstructorUsedError;
   int? get taskId => throw _privateConstructorUsedError;
@@ -31,7 +31,7 @@ abstract class $JuniorEmployeeCopyWith<$Res> {
   factory $JuniorEmployeeCopyWith(
           JuniorEmployee value, $Res Function(JuniorEmployee) then) =
       _$JuniorEmployeeCopyWithImpl<$Res>;
-  $Res call({int id, String name, int relatedTo, int? taskId});
+  $Res call({int? id, String name, int relatedTo, int? taskId});
 }
 
 /// @nodoc
@@ -54,7 +54,7 @@ class _$JuniorEmployeeCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -78,7 +78,7 @@ abstract class _$$_JuniorEmployeeCopyWith<$Res>
           _$_JuniorEmployee value, $Res Function(_$_JuniorEmployee) then) =
       __$$_JuniorEmployeeCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String name, int relatedTo, int? taskId});
+  $Res call({int? id, String name, int relatedTo, int? taskId});
 }
 
 /// @nodoc
@@ -103,7 +103,7 @@ class __$$_JuniorEmployeeCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -131,7 +131,7 @@ class _$_JuniorEmployee extends _JuniorEmployee {
       : super._();
 
   @override
-  final int id;
+  final int? id;
   @override
   final String name;
   @override
@@ -171,14 +171,14 @@ class _$_JuniorEmployee extends _JuniorEmployee {
 
 abstract class _JuniorEmployee extends JuniorEmployee {
   const factory _JuniorEmployee(
-      {required final int id,
+      {required final int? id,
       required final String name,
       required final int relatedTo,
       final int? taskId}) = _$_JuniorEmployee;
   const _JuniorEmployee._() : super._();
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override

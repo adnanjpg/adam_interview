@@ -7,7 +7,7 @@ class JuniorEmployee with _$JuniorEmployee {
   const JuniorEmployee._();
 
   const factory JuniorEmployee({
-    required int id,
+    required int? id,
     required String name,
     required int relatedTo,
     int? taskId,

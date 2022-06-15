@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'ui/main_screen.dart';
+import 'ui/main_screen/main_screen.dart';
 import 'utils/hive_initer.dart';
 
 void main() async {
@@ -36,6 +36,9 @@ class MyApp extends StatelessWidget {
           onSurface: Color(0xFFFFFFFF),
           primary: primary,
           onPrimary: Colors.black,
+        ),
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
         ),
       ),
       home: const MainScreen(),

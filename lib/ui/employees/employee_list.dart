@@ -17,7 +17,7 @@ class EmployeeList extends ConsumerWidget {
             itemCount: employees.length,
             itemBuilder: (context, indx) {
               final emp = employees[indx];
-
+              // TODO: have an add a junior button
               return Text(emp.name);
             },
           );
