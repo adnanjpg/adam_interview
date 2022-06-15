@@ -45,6 +45,17 @@ abstract class EmployeesData {
     return _listenToListData<SeniorEmployee>(seniorEmployeesBoxName);
   }
 
+  static Future<List<JuniorEmployee>> getSeniorsEmployees(
+      SeniorEmployee senior) async {
+    final juniors = await readJuniorEmployees();
+
+    return juniors.where(
+      (element) {
+        return element.relatedTo == senior.id;
+      },
+    ).toList();
+  }
+
   static Future<List<JuniorEmployee>> readJuniorEmployees() {
     return _readListData<JuniorEmployee>(juniorEmployeesBoxName);
   }
