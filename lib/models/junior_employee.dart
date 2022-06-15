@@ -5,7 +5,7 @@ part 'junior_employee.freezed.dart';
 part 'junior_employee.g.dart';
 
 @freezed
-@HiveType(typeId: 1)
+@HiveType(typeId: 2)
 class JuniorEmployee with _$JuniorEmployee {
   const JuniorEmployee._();
 

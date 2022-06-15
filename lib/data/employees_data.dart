@@ -1,30 +1,39 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../models/junior_employee.dart';
 import '../models/senior_employee.dart';
 import '../utils/consts.dart';
 
 abstract class EmployeesData {
-  static Stream<List<SeniorEmployee>> getSeniorEmployees() async* {
-    await Hive.openBox(seniorEmployeesBoxName);
+  static Stream<List<T>> _listenToListData<T>(String boxName) async* {
+    await Hive.openBox(boxName);
 
-    final initVals = Hive.box(seniorEmployeesBoxName).values;
+    final initVals = Hive.box(boxName).values;
 
-    final employees = List<SeniorEmployee>.from(initVals);
+    final data = List<T>.from(initVals);
 
-    yield employees;
+    yield data;
 
-    await for (final event in Hive.box(seniorEmployeesBoxName).watch()) {
+    await for (final event in Hive.box(boxName).watch()) {
       final isDelete = event.deleted;
 
-      final SeniorEmployee val = event.value;
+      final T val = event.value;
 
       if (isDelete) {
-        employees.remove(val);
+        data.remove(val);
       } else {
-        employees.add(val);
+        data.add(val);
       }
 
-      yield employees;
+      yield data;
     }
+  }
+
+  static Stream<List<SeniorEmployee>> getSeniorEmployees() {
+    return _listenToListData<SeniorEmployee>(seniorEmployeesBoxName);
+  }
+
+  static Stream<List<JuniorEmployee>> getJuniorEmployees() {
+    return _listenToListData<JuniorEmployee>(juniorEmployeesBoxName);
   }
 }

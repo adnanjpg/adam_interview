@@ -8,7 +8,7 @@ part of 'junior_employee.dart';
 
 class JuniorEmployeeAdapter extends TypeAdapter<JuniorEmployee> {
   @override
-  final int typeId = 1;
+  final int typeId = 2;
 
   @override
   JuniorEmployee read(BinaryReader reader) {
