@@ -3,46 +3,15 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../models/junior_employee.dart';
 import '../models/senior_employee.dart';
 import '../utils/consts.dart';
+import 'data_manager.dart';
 
 abstract class EmployeesData {
-  static Future<List<T>> _readListData<T>(String boxName) async {
-    final box = await Hive.openBox(boxName);
-
-    final initVals = box.values;
-
-    final data = List<T>.from(initVals);
-
-    return data;
-  }
-
-  static Stream<List<T>> _listenToListData<T>(String boxName) async* {
-    final initVals = await _readListData(boxName);
-
-    final data = List<T>.from(initVals);
-
-    yield data;
-
-    await for (final event in Hive.box(boxName).watch()) {
-      final isDelete = event.deleted;
-
-      final T? val = event.value;
-
-      if (isDelete) {
-        data.remove(val);
-      } else {
-        data.add(val as T);
-      }
-
-      yield data;
-    }
-  }
-
   static Future<List<SeniorEmployee>> readSeniorEmployees() {
-    return _readListData<SeniorEmployee>(seniorEmployeesBoxName);
+    return DataManager.readListData<SeniorEmployee>(seniorEmployeesBoxName);
   }
 
   static Stream<List<SeniorEmployee>> listenToSeniorEmployees() {
-    return _listenToListData<SeniorEmployee>(seniorEmployeesBoxName);
+    return DataManager.listenToListData<SeniorEmployee>(seniorEmployeesBoxName);
   }
 
   static Future<List<JuniorEmployee>> getSeniorsEmployees(
@@ -57,11 +26,11 @@ abstract class EmployeesData {
   }
 
   static Future<List<JuniorEmployee>> readJuniorEmployees() {
-    return _readListData<JuniorEmployee>(juniorEmployeesBoxName);
+    return DataManager.readListData<JuniorEmployee>(juniorEmployeesBoxName);
   }
 
   static Stream<List<JuniorEmployee>> listenToJuniorEmployees() {
-    return _listenToListData<JuniorEmployee>(juniorEmployeesBoxName);
+    return DataManager.listenToListData<JuniorEmployee>(juniorEmployeesBoxName);
   }
 
   static Future<List<JuniorEmployee>> getUnteamedEmployees() async {
@@ -136,7 +105,7 @@ abstract class EmployeesData {
     required bool Function(T) predicate,
     required T newValue,
   }) async {
-    final initVals = await _readListData(boxName);
+    final initVals = await DataManager.readListData(boxName);
 
     final newVals = <T>[];
 
