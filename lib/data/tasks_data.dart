@@ -12,7 +12,11 @@ abstract class TasksData {
   }
 
   static Stream<List<Task>> listenToTasks() {
-    return DataManager.listenToListData<Task>(tasksBoxName);
+    return DataManager.listenToListData<Task>(tasksBoxName).map(
+      (event) {
+        return event.where((element) => element.id != null).toList();
+      },
+    );
   }
 
   static Future<SeniorEmployee> taskOwnerSenior(Task task) async {

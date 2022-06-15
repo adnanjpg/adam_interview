@@ -37,7 +37,12 @@ abstract class EmployeesData {
   }
 
   static Stream<List<JuniorEmployee>> listenToJuniorEmployees() {
-    return DataManager.listenToListData<JuniorEmployee>(juniorEmployeesBoxName);
+    return DataManager.listenToListData<JuniorEmployee>(juniorEmployeesBoxName)
+        .map(
+      (event) {
+        return event.where((element) => element.id != null).toList();
+      },
+    );
   }
 
   static Future<List<JuniorEmployee>> getUnteamedEmployees() async {
