@@ -36,4 +36,27 @@ abstract class EmployeesData {
   static Stream<List<JuniorEmployee>> getJuniorEmployees() {
     return _listenToListData<JuniorEmployee>(juniorEmployeesBoxName);
   }
+
+  static Future<void> createJuniorEmployee(JuniorEmployee employee) async {
+    final box = await Hive.openBox(juniorEmployeesBoxName);
+
+    final boxVals = box.values;
+    JuniorEmployee? lastEmployee;
+    if (boxVals.isNotEmpty) {
+      lastEmployee = boxVals.last as JuniorEmployee?;
+    }
+
+    int id;
+
+    if (lastEmployee == null) {
+      id = 0;
+    } else {
+      id = lastEmployee.id! + 1;
+    }
+
+    employee = employee.copyWith(id: id);
+
+    await box.add(employee);
+    return;
+  }
 }

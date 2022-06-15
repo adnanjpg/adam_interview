@@ -8,7 +8,7 @@ class EmployeeList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final val = ref.watch(seniorEmployeesProv);
+    final val = ref.watch(juniorEmployeesProv);
 
     return Center(
       child: val.when(
