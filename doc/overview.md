@@ -48,5 +48,9 @@ The task contains the following properties:
 This app uses Hive db to store its data, and the data flows as a `Stream` that listens to the Hive db into the app. an extra layer of `StreamProvider` is used to provide the data to the app because of the ease it provides to render the ui. 
 
 Hive db uses its own magic internally, you do not have to worry about columns and rows like you would in a SQL db. this is great for such a minimal project, but in a bigger scale projects you will have to think about columns and rows.
-
 </details>
+
+<br>
+This is a diagram displaying how the ui and data flows in the app:
+
+![](app_flow.png)
