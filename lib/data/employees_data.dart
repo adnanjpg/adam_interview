@@ -18,7 +18,10 @@ abstract class EmployeesData {
   }
 
   static Stream<List<SeniorEmployee>> listenToSeniorEmployees() {
-    return DataManager.listenToListData<SeniorEmployee>(seniorEmployeesBoxName);
+    return DataManager.listenToListData<SeniorEmployee>(
+      boxName: seniorEmployeesBoxName,
+      compare: (a, b) => a.id == b.id,
+    );
   }
 
   static Future<List<JuniorEmployee>> getSeniorsEmployees(
@@ -37,8 +40,10 @@ abstract class EmployeesData {
   }
 
   static Stream<List<JuniorEmployee>> listenToJuniorEmployees() {
-    return DataManager.listenToListData<JuniorEmployee>(juniorEmployeesBoxName)
-        .map(
+    return DataManager.listenToListData<JuniorEmployee>(
+      boxName: juniorEmployeesBoxName,
+      compare: (a, b) => a.id == b.id,
+    ).map(
       (event) {
         return event.where((element) => element.id != null).toList();
       },

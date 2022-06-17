@@ -11,7 +11,10 @@ abstract class DataManager {
     return data;
   }
 
-  static Stream<List<T>> listenToListData<T>(String boxName) async* {
+  static Stream<List<T>> listenToListData<T>({
+    required String boxName,
+    required bool Function(T, T) compare,
+  }) async* {
     final initVals = await readListData(boxName);
 
     final data = List<T>.from(initVals);
@@ -23,10 +26,20 @@ abstract class DataManager {
 
       final T? val = event.value;
 
-      if (isDelete) {
-        data.remove(val);
+      if (isDelete || val == null) {
+        return;
+      }
+
+      final alreadyExists = data.any((element) => compare(element, val));
+      // if alreadyExists, call updateValueWhere
+      if (alreadyExists) {
+        await updateValueWhere<T>(
+          boxName: boxName,
+          predicate: (e) => compare(e, val),
+          newValue: val,
+        );
       } else {
-        data.add(val as T);
+        data.add(val);
       }
 
       yield data;

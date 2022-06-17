@@ -12,7 +12,10 @@ abstract class TasksData {
   }
 
   static Stream<List<Task>> listenToTasks() {
-    return DataManager.listenToListData<Task>(tasksBoxName).map(
+    return DataManager.listenToListData<Task>(
+      boxName: tasksBoxName,
+      compare: (a, b) => a.id == b.id,
+    ).map(
       (event) {
         return event.where((element) => element.id != null).toList();
       },
